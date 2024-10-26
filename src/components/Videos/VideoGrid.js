@@ -15,7 +15,7 @@ export default function VideoGrid (){
     }, []);
 
     return (
-        <div className="flex justify-center flex-wrap gap-4 m-5"> 
+        <div className="flex justify-evenly flex-wrap gap-4 m-5 max-w-[1200px]"> 
                 {
                     videos.map((video, index) => (
                         <VideoCard key={index} video={video}></VideoCard>
