@@ -4,7 +4,7 @@ import VideoCardContent from "./VideoCardContent";
 export default function VideoCard({video, playVideo}) {
     
     return (
-        <div className="bg-white rounded-lg shadow-md w-[calc(33.33%-16px)] overflow-hidden flex flex-col hover:shadow-xl ">
+        <div className="bg-white rounded-lg shadow-md sm:w-full md:w-[calc(33.33%-16px)] overflow-hidden flex flex-col hover:shadow-xl ">
             <img
                 alt={video.title}
                 // hover:grayscale

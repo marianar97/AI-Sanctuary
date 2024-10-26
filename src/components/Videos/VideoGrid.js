@@ -1,24 +1,7 @@
-import {useState, useEffect} from "react";
 import VideoCard from "./VideoCard";
 import { X } from 'lucide-react';
 
-
-
-export default function VideoGrid (){
-
-    const [videos, setVideos] = useState([]);
-    const [activeVideo, setActiveVideo] = useState(null);
-
-    const openVideo = (videoId) => setActiveVideo(videoId)
-    const closeVideo = () => setActiveVideo(null)
-    console.log(activeVideo)
-
-    useEffect(() => {
-        fetch("videos.json")
-        .then((response)=>response.json())
-        .then((data)=>setVideos(data));
-    }, []);
-
+export default function VideoGrid ({videos, openVideo, closeVideo, activeVideo}) {
     return (
         <div>
             <div className="flex justify-evenly flex-wrap gap-4 m-5 max-w-[1200px]"> 
