@@ -1,18 +1,18 @@
 [
-    {
-      "title": "Attention Is All You Need: Transformers and Language Models",
-      "channel": "Yannic Kilcher",
-      "duration": "21:24",
-      "thumbnail": "https://i.ytimg.com/vi/iDulhoQ2pro/mqdefault.jpg",
-      "id": "iDulhoQ2pro",
-      "tags": ["Foundation", "Intermediate"]
-    },
-    {
-        "title": "Attention Is All You Need: Transformers and Language Models",
-        "channel": "Yannic Kilcher",
-        "duration": "21:24",
-        "thumbnail": "https://i.ytimg.com/vi/iDulhoQ2pro/mqdefault.jpg",
-        "id": "2",
-        "tags": ["Foundation", "Intermediate"]
-      }
+  {
+    "title": "Attention Is All You Need: Transformers and Language Models",
+    "channel": "Yannic Kilcher",
+    "duration": "21:24",
+    "thumbnail": "https://i.ytimg.com/vi/iDulhoQ2pro/mqdefault.jpg",
+    "id": "iDulhoQ2pro",
+    "tags": ["Foundation", "Intermediate"]
+  },
+  {
+    "title": "Attention Is All You Need: Transformers and Language Models",
+    "channel": "Yannic Kilcher",
+    "duration": "21:24",
+    "thumbnail": "https://i.ytimg.com/vi/iDulhoQ2pro/mqdefault.jpg",
+    "id": "2",
+    "tags": ["Foundation", "Intermediate"]
+  }
 ]

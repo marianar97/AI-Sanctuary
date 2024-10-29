@@ -60,6 +60,7 @@ export default function HomePage() {
         const response = await fetch(
           "https://ai-hub-server.vercel.app/api/get-videos"
         );
+        console.log("response", response);
         if (response.status !== 200) {
           throw new Error("Failed to fetch videos");
         }
