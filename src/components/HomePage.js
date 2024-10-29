@@ -1,5 +1,4 @@
 import React, { useReducer, useEffect } from "react";
-import "../CSS/header.css";
 import HeroSection from "./HeroSection/HeroSection";
 import VideoGrid from "./Videos/VideoGrid";
 import Tags from "./Tags/Tags";
