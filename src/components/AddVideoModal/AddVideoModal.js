@@ -77,24 +77,27 @@ export default function AddVideoModal({ isOpen, onClose }) {
       });
       console.log("request", request);
       // Add video
-      const response = await fetch("http://localhost:5000/api/parse-video", {
-        // Added http://
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          tags: selectedTags,
-          url: newVideoUrl,
-        }),
-      });
+      const response = await fetch(
+        "https://ai-hub-server.vercel.app/api/parse-video",
+        {
+          // Added http://
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            tags: selectedTags,
+            url: newVideoUrl,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`Failed to add video: ${response.statusText}`);
       }
 
       const data = await response.json();
-      console.log(data);
+      window.location.reload(true);
       onClose();
     } catch (error) {
       setError(error.message); // Set just the error message instead of the entire error object
