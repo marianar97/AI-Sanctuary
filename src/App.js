@@ -3,7 +3,7 @@ import HomePage from "./components/HomePage";
 
 function App() {
   return (
-    <div className="App flex flex-col">
+    <div className="App flex-1">
       <HomePage></HomePage>
     </div>
   );

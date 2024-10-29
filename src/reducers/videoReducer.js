@@ -18,6 +18,8 @@ export default function videoReducer(state, action) {
           ? state.selectedTags.filter((tag) => tag !== action.payload)
           : [...state.selectedTags, action.payload],
       };
+    case "SET_IS_ADD_VIDEO_MODAL_OPEN":
+      return { ...state, isAddVideoModalOpen: action.payload };
     default:
       return state;
   }

@@ -1,20 +1,24 @@
-import { useEffect, useState, useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import "../CSS/header.css";
 import HeroSection from "./HeroSection/HeroSection";
 import VideoGrid from "./Videos/VideoGrid";
 import Tags from "./Tags/Tags";
 import reducer from "../reducers/videoReducer";
+import SearchBar from "./Search/SearchBar";
+import AddVideoModal from "./AddVideoModal/AddVideoModal";
 
 const initialState = {
   videos: [],
   activeVideo: null,
   searchTerm: "",
   selectedTags: [],
+  isAddVideoModalOpen: false,
 };
 
 export default function HomePage() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { videos, activeVideo, searchTerm, selectedTags } = state;
+  const { videos, activeVideo, searchTerm, selectedTags, isAddVideoModalOpen } =
+    state;
 
   const openVideo = (videoId) =>
     dispatch({ type: "SET_ACTIVE_VIDEO", payload: videoId });
@@ -44,6 +48,13 @@ export default function HomePage() {
 
   filteredVideos = filteredVideosByTags(filteredVideos);
 
+  const onAddVideo = () => {
+    dispatch({ type: "SET_IS_ADD_VIDEO_MODAL_OPEN", payload: true });
+  };
+  const onCloseAddVideo = () => {
+    dispatch({ type: "SET_IS_ADD_VIDEO_MODAL_OPEN", payload: false });
+  };
+
   useEffect(() => {
     fetch("videos.json")
       .then((response) => response.json())
@@ -52,14 +63,23 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col w-full items-center">
-      <HeroSection value={searchTerm} handleSearch={handleSearch}></HeroSection>
-      <Tags onClick={handleTagToggle}></Tags>
-      <VideoGrid
-        videos={filteredVideos}
-        openVideo={openVideo}
-        activeVideo={activeVideo}
-        closeVideo={closeVideo}
-      ></VideoGrid>
+      <HeroSection onAddVideo={onAddVideo}></HeroSection>
+      <div className="w-full py-12 md:py-24 lg:py-32 container">
+        <div className="mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <Tags onClick={handleTagToggle}></Tags>
+          <SearchBar value={searchTerm} handleSearch={handleSearch}></SearchBar>
+        </div>
+        <VideoGrid
+          videos={filteredVideos}
+          openVideo={openVideo}
+          activeVideo={activeVideo}
+          closeVideo={closeVideo}
+        ></VideoGrid>
+        <AddVideoModal
+          isOpen={isAddVideoModalOpen}
+          onClose={onCloseAddVideo}
+        ></AddVideoModal>
+      </div>
     </div>
   );
 }

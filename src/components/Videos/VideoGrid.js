@@ -24,7 +24,6 @@ export default function VideoGrid({
           <div className="bg-white p-4 rounded-lg shadow-lg relative max-w-3xl w-full">
             <button
               className="[&_svg]:size-4 [&_svg]:shrink-0 hover:bg-white color-black h-9 w-9 absolute top-2 right-2"
-              // className="absolute top-2 right-2"
               onClick={closeVideo}
             >
               <X size={24} />

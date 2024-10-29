@@ -1,14 +1,14 @@
 import React from "react";
 import HeroTitle from "./HeroTitle";
 import HeroDescription from "./HeroDescription";
-import SearchBar from "./Search/SearchBar";
+import AddButton from "./AddButton";
 
-export default function HeroSection({ value, handleSearch }) {
+export default function HeroSection({ onAddVideo }) {
   return (
-    <div className="flex items-center flex-col space-y-2 py-16">
+    <section className="w-full flex items-center flex-col space-y-2 py-16">
       <HeroTitle></HeroTitle>
       <HeroDescription></HeroDescription>
-      <SearchBar value={value} handleSearch={handleSearch}></SearchBar>
-    </div>
+      <AddButton onAddVideo={onAddVideo}></AddButton>
+    </section>
   );
 }
