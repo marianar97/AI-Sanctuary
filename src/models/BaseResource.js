@@ -57,7 +57,7 @@ export function createBaseResource({
 export function isValidBaseResource(resource) {
   return (
     resource &&
-    typeof resource.id === "number" &&
+    typeof resource.id === "string" &&
     resource.id.trim() !== "" &&
     typeof resource.type === "string" &&
     resource.type.trim() !== "" &&

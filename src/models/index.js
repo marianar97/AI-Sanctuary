@@ -6,3 +6,6 @@
  */
 
 export * from "./BaseResource";
+export * from "./VideoResource";
+export * from "./BookResource";
+export * from "./ArticleResource";
