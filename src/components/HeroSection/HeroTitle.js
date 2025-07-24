@@ -15,7 +15,7 @@ export default function HeroInfo() {
             padding: "0 0.1em",
           }}
         >
-          AI Sanctuary
+          Sanctuary
         </span>
       </h1>
     </div>

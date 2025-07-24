@@ -1,14 +1,14 @@
 import React from "react";
 import Tag from "./Tag";
 
+
 export default function Tags({ onClick }) {
   const tags = [
-    "Intermediate",
-    "Foundation",
-    "Beginner",
-    "Advanced",
-    "Applied",
-    "Theory",
+    "Videos",
+    "Articles",
+    "Books",
+    "Movies",
+    "Quotes",
   ];
   return (
     <div className="mb-8 flex flex-wrap gap-2">
