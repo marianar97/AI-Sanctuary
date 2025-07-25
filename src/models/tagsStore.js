@@ -7,6 +7,7 @@
 
 import { isValidTag } from './Tag';
 import { isValidCategory } from './Category';
+import { saveToLocalStorage, loadFromLocalStorage } from '../utils/localStorage';
 
 /**
  * In-memory store for managing tags
@@ -155,7 +156,7 @@ const tagsStore = {
    */
   persistTags() {
     try {
-      localStorage.setItem('tags', JSON.stringify(this.tags));
+      saveToLocalStorage('tags', this.tags);
     } catch (error) {
       console.error('Failed to persist tags to localStorage:', error);
     }
@@ -166,10 +167,8 @@ const tagsStore = {
    */
   loadTags() {
     try {
-      const storedTags = localStorage.getItem('tags');
-      if (storedTags) {
-        this.tags = JSON.parse(storedTags);
-      }
+      const storedTags = loadFromLocalStorage('tags', []);
+      this.tags = storedTags || [];
     } catch (error) {
       console.error('Failed to load tags from localStorage:', error);
     }

@@ -8,6 +8,7 @@
 
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
 import { tagsStore } from '../models';
+import { saveToLocalStorage, loadFromLocalStorage, isLocalStorageAvailable } from '../utils/localStorage';
 
 // Create the context
 const ResourceContext = createContext();
@@ -53,7 +54,7 @@ function resourceReducer(state, action) {
     case 'ADD_RESOURCE':
       // Add a new resource to the state and persist to localStorage
       const updatedResources = [...state.resources, action.payload];
-      localStorage.setItem('resources', JSON.stringify(updatedResources));
+      saveToLocalStorage('resources', updatedResources);
       return { 
         ...state, 
         resources: updatedResources 
@@ -64,7 +65,7 @@ function resourceReducer(state, action) {
       const updatedResourceList = state.resources.map(resource => 
         resource.id === action.payload.id ? action.payload : resource
       );
-      localStorage.setItem('resources', JSON.stringify(updatedResourceList));
+      saveToLocalStorage('resources', updatedResourceList);
       return {
         ...state,
         resources: updatedResourceList
@@ -75,7 +76,7 @@ function resourceReducer(state, action) {
       const filteredResources = state.resources.filter(
         resource => resource.id !== action.payload
       );
-      localStorage.setItem('resources', JSON.stringify(filteredResources));
+      saveToLocalStorage('resources', filteredResources);
       return {
         ...state,
         resources: filteredResources
@@ -114,9 +115,15 @@ export function ResourceProvider({ children }) {
   useEffect(() => {
     dispatch({ type: 'FETCH_RESOURCES_START' });
     try {
-      const storedResources = localStorage.getItem('resources');
-      const resources = storedResources ? JSON.parse(storedResources) : [];
-      dispatch({ type: 'FETCH_RESOURCES_SUCCESS', payload: resources });
+      // Check if localStorage is available
+      if (isLocalStorageAvailable()) {
+        const resources = loadFromLocalStorage('resources', []);
+        dispatch({ type: 'FETCH_RESOURCES_SUCCESS', payload: resources });
+      } else {
+        // If localStorage is not available, use an empty array
+        dispatch({ type: 'FETCH_RESOURCES_SUCCESS', payload: [] });
+        console.warn('localStorage is not available. Resources will not persist.');
+      }
     } catch (error) {
       dispatch({ type: 'FETCH_RESOURCES_ERROR', payload: error.message });
       console.error('Error loading resources from localStorage:', error);

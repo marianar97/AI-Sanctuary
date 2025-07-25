@@ -14,3 +14,14 @@ export {
   useResourcesByType,
   useResourcesByTag
 } from './useResourceHooks';
+
+export {
+  useAddTag,
+  useUpdateTag,
+  useDeleteTag,
+  useFilterTags,
+  useTagsData,
+  useTagById,
+  useTagsByCategory,
+  useCategories
+} from './useTagHooks';

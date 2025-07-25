@@ -8,6 +8,7 @@
 
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
 import tagsStore from '../models/tagsStore';
+import { isLocalStorageAvailable } from '../utils/localStorage';
 
 // Create the context
 const TagContext = createContext();
@@ -165,15 +166,25 @@ export function TagProvider({ children }) {
   useEffect(() => {
     dispatch({ type: 'FETCH_TAGS_START' });
     try {
-      // Load tags from localStorage via tagsStore
-      tagsStore.loadTags();
-      const tags = tagsStore.tags;
-      const categories = tagsStore.getAllCategories();
-      
-      dispatch({ 
-        type: 'FETCH_TAGS_SUCCESS', 
-        payload: { tags, categories } 
-      });
+      // Check if localStorage is available
+      if (isLocalStorageAvailable()) {
+        // Load tags from localStorage via tagsStore
+        tagsStore.loadTags();
+        const tags = tagsStore.tags;
+        const categories = tagsStore.getAllCategories();
+        
+        dispatch({ 
+          type: 'FETCH_TAGS_SUCCESS', 
+          payload: { tags, categories } 
+        });
+      } else {
+        // If localStorage is not available, use empty arrays
+        dispatch({ 
+          type: 'FETCH_TAGS_SUCCESS', 
+          payload: { tags: [], categories: [] } 
+        });
+        console.warn('localStorage is not available. Tags will not persist.');
+      }
     } catch (error) {
       dispatch({ type: 'FETCH_TAGS_ERROR', payload: error.message });
       console.error('Error loading tags:', error);
