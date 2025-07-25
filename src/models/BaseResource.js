@@ -21,6 +21,7 @@
  */
 export function createBaseResource({
   id,
+  categoryId,
   type,
   title,
   url,
@@ -30,6 +31,7 @@ export function createBaseResource({
 }) {
   // Validate required fields
   if (!id) throw new Error("Resource id is required");
+  if (!categoryId) throw new Error("Resource categoryId is required");
   if (!type) throw new Error("Resource type is required");
   if (!title) throw new Error("Resource title is required");
   if (!url) throw new Error("Resource url is required");
@@ -37,6 +39,7 @@ export function createBaseResource({
   // Return the base resource object
   return {
     id,
+    categoryId,
     type,
     title,
     url,
@@ -59,6 +62,8 @@ export function isValidBaseResource(resource) {
     resource &&
     typeof resource.id === "string" &&
     resource.id.trim() !== "" &&
+    typeof resource.categoryId === "string" &&
+    resource.categoryId.trim() !== "" &&
     typeof resource.type === "string" &&
     resource.type.trim() !== "" &&
     typeof resource.title === "string" &&
