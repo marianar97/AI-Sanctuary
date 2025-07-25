@@ -1,23 +1,23 @@
-import React from "react";
+import React, { useRef } from "react";
+import ReactDOM from "react-dom";
+import SplitText from "../TextAnimations/SplitText/SplitText.jsx";
 
-export default function HeroInfo() {
+export default function HeroTitle() {
   return (
-    <div>
-      <h1 className="text-3xl mb-2font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-        <span
-          style={{
-            background: "linear-gradient(135deg, #3b82f6, #ec4899, #f97316)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-            color: "transparent",
-            display: "inline-block",
-            padding: "0 0.1em",
-          }}
-        >
-          Sanctuary
-        </span>
-      </h1>
+    <div className="mt-10">
+      <SplitText
+        text="Digital Sanctuary"
+        className="text-7xl font-semibold text-center"
+        delay={100}
+        duration={0.6}
+        ease="power3.out"
+        splitType="chars"
+        from={{ opacity: 0, y: 40 }}
+        to={{ opacity: 1, y: 0 }}
+        threshold={0.1}
+        rootMargin="-100px"
+        textAlign="center"
+      />
     </div>
   );
 }

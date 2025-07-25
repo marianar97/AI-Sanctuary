@@ -5,6 +5,14 @@ import Tags from "./Tags/Tags";
 import reducer from "../reducers/videoReducer";
 import SearchBar from "./Search/SearchBar";
 import AddVideoModal from "./AddVideoModal/AddVideoModal";
+import ResourceDemo from "./ResourceDemo";
+import TagDemo from "./TagDemo";
+import ResourceHooksDemo from "./ResourceHooksDemo";
+import TagHooksDemo from "./TagHooksDemo";
+import AppStateDemo from "./AppStateDemo";
+import { ResourceSelectionDemo } from "./Resources";
+import HeroTitle from "./HeroSection/HeroTitle";
+import Resources from "./Resources";
 
 const initialState = {
   videos: [],
@@ -22,7 +30,9 @@ export default function HomePage() {
     searchTerm,
     selectedTags,
     isAddVideoModalOpen,
+    // eslint-disable-next-line no-unused-vars
     isLoading,
+    // eslint-disable-next-line no-unused-vars
     error,
   } = state;
 
@@ -83,23 +93,8 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col w-full items-center">
-      <HeroSection onAddVideo={onAddVideo}></HeroSection>
-      <div className="w-full py-12 md:py-24 lg:py-24 container">
-        <div className="mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Tags onClick={handleTagToggle}></Tags>
-          <SearchBar value={searchTerm} handleSearch={handleSearch}></SearchBar>
-        </div>
-        <VideoGrid
-          videos={filteredVideos}
-          openVideo={openVideo}
-          activeVideo={activeVideo}
-          closeVideo={closeVideo}
-        ></VideoGrid>
-        <AddVideoModal
-          isOpen={isAddVideoModalOpen}
-          onClose={onCloseAddVideo}
-        ></AddVideoModal>
-      </div>
+      <HeroTitle></HeroTitle>
+      <Resources></Resources>
     </div>
   );
 }

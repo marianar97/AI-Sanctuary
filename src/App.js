@@ -1,17 +1,14 @@
 import "./App.css";
 import HomePage from "./components/HomePage";
-import { ResourceProvider } from "./context/ResourceContext";
-import { TagProvider } from "./context/TagContext";
+import { AppStateProvider } from "./context/AppStateContext";
 
 function App() {
   return (
-    <TagProvider>
-      <ResourceProvider>
-        <div className="App flex-1">
-          <HomePage></HomePage>
-        </div>
-      </ResourceProvider>
-    </TagProvider>
+    <AppStateProvider>
+      <div className="App flex-1">
+        <HomePage></HomePage>
+      </div>
+    </AppStateProvider>
   );
 }
 

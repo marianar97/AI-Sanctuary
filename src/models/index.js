@@ -13,3 +13,12 @@ export * from "./Tag";
 export * from "./Category";
 export * from "./ResourceTags";
 export { default as tagsStore } from "./tagsStore";
+
+// Export resource type constants
+export const RESOURCE_TYPES = {
+  VIDEO: 'video',
+  BOOK: 'book',
+  ARTICLE: 'article',
+  COURSE: 'course',
+  TOOL: 'tool'
+};
